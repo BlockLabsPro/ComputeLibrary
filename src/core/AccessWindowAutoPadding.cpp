@@ -31,6 +31,9 @@ using namespace arm_compute;
 AccessWindowAutoPadding::AccessWindowAutoPadding(ITensorInfo *info)
     : _info(info)
 {
+    if (!info) {
+        throw Error;
+    }
 }
 
 ValidRegion AccessWindowAutoPadding::compute_valid_region(const Window &window, ValidRegion input_valid_region, bool border_undefined, BorderSize border_size) const
